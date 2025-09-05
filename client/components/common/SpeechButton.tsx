@@ -3,9 +3,15 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mic, MicOff } from "lucide-react";
 
-export default function SpeechButton({ onText }: { onText: (text: string) => void }) {
+export default function SpeechButton({
+  onText,
+}: {
+  onText: (text: string) => void;
+}) {
   const { lang } = useI18n();
-  const Rec: any = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+  const Rec: any =
+    (window as any).SpeechRecognition ||
+    (window as any).webkitSpeechRecognition;
   const supported = Boolean(Rec);
   const [listening, setListening] = useState(false);
   const recogRef = useRef<any>(null);
@@ -54,7 +60,13 @@ export default function SpeechButton({ onText }: { onText: (text: string) => voi
   if (!supported) return null;
 
   return (
-    <Button type="button" size="sm" variant={listening ? "destructive" : "secondary"} onClick={toggle} aria-label={listening ? "Stop recording" : "Start recording"}>
+    <Button
+      type="button"
+      size="sm"
+      variant={listening ? "destructive" : "secondary"}
+      onClick={toggle}
+      aria-label={listening ? "Stop recording" : "Start recording"}
+    >
       {listening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
       {listening ? "Listening" : "Speak"}
     </Button>

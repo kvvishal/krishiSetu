@@ -117,7 +117,9 @@ export function startAutoSync(intervalMs = 10000) {
   setInterval(run, intervalMs);
 }
 
-export async function getRecordsByType(type: RecordType): Promise<LocalRecord[]> {
+export async function getRecordsByType(
+  type: RecordType,
+): Promise<LocalRecord[]> {
   const all = await getAllRecords();
   return all
     .filter((r) => r.type === type)
@@ -140,6 +142,8 @@ export async function deleteRecordsByIds(ids: string[]): Promise<void> {
 }
 
 export async function clearType(type: RecordType): Promise<void> {
-  const toDelete = (await getAllRecords()).filter((r) => r.type === type).map((r) => r.id);
+  const toDelete = (await getAllRecords())
+    .filter((r) => r.type === type)
+    .map((r) => r.id);
   if (toDelete.length) await deleteRecordsByIds(toDelete);
 }

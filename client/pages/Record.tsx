@@ -21,7 +21,12 @@ export default function RecordPage() {
   }, []);
 
   const save = async () => {
-    await putRecord({ id: crypto.randomUUID(), type: "crop", payload: { crop, notes }, updatedAt: Date.now() });
+    await putRecord({
+      id: crypto.randomUUID(),
+      type: "crop",
+      payload: { crop, notes },
+      updatedAt: Date.now(),
+    });
     toast.success("Saved offline");
     setNotes("");
     await load();
@@ -34,16 +39,24 @@ export default function RecordPage() {
         <div>
           <label className="flex items-center justify-between text-sm">
             <span>Crop</span>
-            <SpeechButton onText={(t) => setCrop((p) => (p ? p + " " : "") + t)} />
+            <SpeechButton
+              onText={(t) => setCrop((p) => (p ? p + " " : "") + t)}
+            />
           </label>
           <Input value={crop} onChange={(e) => setCrop(e.target.value)} />
         </div>
         <div>
           <label className="flex items-center justify-between text-sm">
             <span>Notes</span>
-            <SpeechButton onText={(t) => setNotes((p) => (p ? p + " " : "") + t)} />
+            <SpeechButton
+              onText={(t) => setNotes((p) => (p ? p + " " : "") + t)}
+            />
           </label>
-          <Textarea rows={4} value={notes} onChange={(e) => setNotes(e.target.value)} />
+          <Textarea
+            rows={4}
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+          />
         </div>
         <Button onClick={save}>Save</Button>
       </div>
@@ -51,14 +64,27 @@ export default function RecordPage() {
       <div className="mt-8">
         <div className="mb-2 flex items-center justify-between">
           <h2 className="text-lg font-semibold">Saved Records</h2>
-          <Button variant="outline" size="sm" onClick={async () => { await clearType("crop"); await load(); }}>Clear</Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={async () => {
+              await clearType("crop");
+              await load();
+            }}
+          >
+            Clear
+          </Button>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {records.map((r) => (
             <div key={r.id} className="rounded-xl border p-4 text-sm">
               <div className="font-medium">{r.payload?.crop}</div>
-              {r.payload?.notes && <div className="text-muted-foreground">{r.payload.notes}</div>}
-              <div className="text-xs text-muted-foreground">{new Date(r.updatedAt).toLocaleString()}</div>
+              {r.payload?.notes && (
+                <div className="text-muted-foreground">{r.payload.notes}</div>
+              )}
+              <div className="text-xs text-muted-foreground">
+                {new Date(r.updatedAt).toLocaleString()}
+              </div>
             </div>
           ))}
           {records.length === 0 && (
