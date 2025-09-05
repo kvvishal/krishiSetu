@@ -29,6 +29,7 @@ export default function Index() {
       updatedAt: Date.now(),
     });
     toast.success("Saved offline");
+    window.location.href = "/record";
   };
 
   const getAdvice = async () => {
@@ -45,6 +46,7 @@ export default function Index() {
     const data = await res.json();
     const a = data.advice;
     toast(`${a.crop}: ${a.tips[0]} • Pest: ${a.pestRisk}`);
+    window.location.href = "/advice";
   };
 
   return (
@@ -90,7 +92,7 @@ export default function Index() {
               </div>
             </button>
             <a
-              href="#market"
+              href="/buyers"
               className="group rounded-2xl border p-5 hover:bg-accent"
             >
               <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white">
@@ -106,19 +108,19 @@ export default function Index() {
           {/* Phone-friendly options */}
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
             <a
-              href="tel:+910800000000"
+              href="/telephony"
               className="flex items-center gap-3 rounded-xl border p-4 text-base hover:bg-accent"
             >
               <Headphones className="h-5 w-5" /> IVR
             </a>
             <a
-              href="sms:+910800000000?body=ADVISORY"
+              href="/telephony"
               className="flex items-center gap-3 rounded-xl border p-4 text-base hover:bg-accent"
             >
               <MessageCircle className="h-5 w-5" /> SMS
             </a>
             <a
-              href="#ussd"
+              href="/ussd"
               className="flex items-center gap-3 rounded-xl border p-4 text-base hover:bg-accent"
             >
               <Radio className="h-5 w-5" /> USSD
