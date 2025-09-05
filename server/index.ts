@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleSync } from "./routes/sync";
+import { handleAdvice } from "./routes/advice";
+import { getBuyers, createListing, listListings } from "./routes/market";
 
 export function createServer() {
   const app = express();
@@ -20,6 +22,12 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
   app.post("/api/sync", handleSync);
+
+  // Advisory & Market APIs
+  app.post("/api/advice", handleAdvice);
+  app.get("/api/market/buyers", getBuyers);
+  app.get("/api/market/listings", listListings);
+  app.post("/api/market/list", createListing);
 
   return app;
 }
