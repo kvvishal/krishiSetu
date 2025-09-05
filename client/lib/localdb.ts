@@ -18,21 +18,29 @@ async function openDB(): Promise<IDBDatabase> {
     const req = indexedDB.open(DB_NAME, DB_VERSION);
     req.onupgradeneeded = () => {
       const db = req.result;
-      if (!db.objectStoreNames.contains(STORE_RECORDS)) db.createObjectStore(STORE_RECORDS, { keyPath: "id" });
-      if (!db.objectStoreNames.contains(STORE_OUTBOX)) db.createObjectStore(STORE_OUTBOX, { keyPath: "id" });
+      if (!db.objectStoreNames.contains(STORE_RECORDS))
+        db.createObjectStore(STORE_RECORDS, { keyPath: "id" });
+      if (!db.objectStoreNames.contains(STORE_OUTBOX))
+        db.createObjectStore(STORE_OUTBOX, { keyPath: "id" });
     };
     req.onerror = () => reject(req.error);
     req.onsuccess = () => resolve(req.result);
   });
 }
 
-export async function putRecord(rec: LocalRecord, enqueueForSync = true): Promise<void> {
+export async function putRecord(
+  rec: LocalRecord,
+  enqueueForSync = true,
+): Promise<void> {
   const db = await openDB();
   await new Promise<void>((resolve, reject) => {
     const tx = db.transaction([STORE_RECORDS, STORE_OUTBOX], "readwrite");
     tx.oncomplete = () => resolve();
     tx.onerror = () => reject(tx.error);
-    tx.objectStore(STORE_RECORDS).put({ ...rec, pending: enqueueForSync ? true : rec.pending });
+    tx.objectStore(STORE_RECORDS).put({
+      ...rec,
+      pending: enqueueForSync ? true : rec.pending,
+    });
     if (enqueueForSync) tx.objectStore(STORE_OUTBOX).put(rec);
   });
 }

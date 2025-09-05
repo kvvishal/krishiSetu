@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 type Lang = "en" | "hi";
 
@@ -16,7 +22,10 @@ const dict: Dict = {
     en: "Android-first PWA that works fully offline. Crop advice, soil & weather insights, and market access — even without internet.",
     hi: "एंड्रॉइड-फ़र्स्ट PWA जो पूरी तरह ऑफ़लाइन काम करता है। फसल सलाह, मिट्टी और मौसम जानकारी, और बाज़ार तक पहुँच — बिना इंटरनेट के।",
   },
-  section1Title: { en: "Offline-first Mobile App", hi: "ऑफ़लाइन-फ़र्स्ट मोबाइल ऐप" },
+  section1Title: {
+    en: "Offline-first Mobile App",
+    hi: "ऑफ़लाइन-फ़र्स्ट मोबाइल ऐप",
+  },
   section1Desc: {
     en: "All critical data is stored securely on-device (IndexedDB). Background sync updates the cloud when connectivity returns.",
     hi: "सभी महत्वपूर्ण डेटा डिवाइस पर सुरक्षित रहता है (IndexedDB)। कनेक्टिविटी आते ही बैकग्राउंड सिंक क्लाउड में अपडेट कर देता है।",
@@ -67,7 +76,7 @@ const dict: Dict = {
   simpleSubtitle: { en: "Do 3 things easily", hi: "तीन आसान काम" },
   btnAdvice: { en: "Get Advice", hi: "सलाह लें" },
   btnRecord: { en: "Record Farm", hi: "खेत दर्ज करें" },
-  btnMarket: { en: "Find Buyer", hi: "खरीदार खोजें" }
+  btnMarket: { en: "Find Buyer", hi: "खरीदार खोजें" },
 };
 
 interface I18nContextValue {

@@ -3,7 +3,16 @@ import { useI18n } from "@/lib/i18n.tsx";
 import { putRecord, startAutoSync } from "@/lib/localdb";
 import { useEffect } from "react";
 import { toast } from "sonner";
-import { Headphones, MessageCircle, Radio, Sprout, ClipboardList, ShoppingCart, Shield, WifiOff } from "lucide-react";
+import {
+  Headphones,
+  MessageCircle,
+  Radio,
+  Sprout,
+  ClipboardList,
+  ShoppingCart,
+  Shield,
+  WifiOff,
+} from "lucide-react";
 
 export default function Index() {
   const { t } = useI18n();
@@ -26,7 +35,12 @@ export default function Index() {
     const res = await fetch("/api/advice", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ crop: "Wheat", soil: "Loam", moisture: 35, rainfall3d: 12 }),
+      body: JSON.stringify({
+        crop: "Wheat",
+        soil: "Loam",
+        moisture: 35,
+        rainfall3d: 12,
+      }),
     });
     const data = await res.json();
     const a = data.advice;
@@ -42,43 +56,71 @@ export default function Index() {
           <div className="flex items-center gap-2 text-xs text-emerald-700">
             <WifiOff className="h-3.5 w-3.5" /> {t("offlineReady")}
           </div>
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">{t("brand")}</h1>
-          <p className="mt-1 text-lg text-muted-foreground">{t("simpleTitle")}</p>
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
+            {t("brand")}
+          </h1>
+          <p className="mt-1 text-lg text-muted-foreground">
+            {t("simpleTitle")}
+          </p>
 
           {/* Three big actions */}
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <button onClick={getAdvice} className="group rounded-2xl border p-5 text-left hover:bg-accent">
+            <button
+              onClick={getAdvice}
+              className="group rounded-2xl border p-5 text-left hover:bg-accent"
+            >
               <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white">
                 <Sprout className="h-6 w-6" />
               </div>
               <div className="text-lg font-semibold">{t("btnAdvice")}</div>
-              <div className="text-sm text-muted-foreground">AI crop, water and pest tips</div>
+              <div className="text-sm text-muted-foreground">
+                AI crop, water and pest tips
+              </div>
             </button>
-            <button onClick={quickRecord} className="rounded-2xl border p-5 text-left hover:bg-accent">
+            <button
+              onClick={quickRecord}
+              className="rounded-2xl border p-5 text-left hover:bg-accent"
+            >
               <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white">
                 <ClipboardList className="h-6 w-6" />
               </div>
               <div className="text-lg font-semibold">{t("btnRecord")}</div>
-              <div className="text-sm text-muted-foreground">Save field data offline</div>
+              <div className="text-sm text-muted-foreground">
+                Save field data offline
+              </div>
             </button>
-            <a href="#market" className="group rounded-2xl border p-5 hover:bg-accent">
+            <a
+              href="#market"
+              className="group rounded-2xl border p-5 hover:bg-accent"
+            >
               <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white">
                 <ShoppingCart className="h-6 w-6" />
               </div>
               <div className="text-lg font-semibold">{t("btnMarket")}</div>
-              <div className="text-sm text-muted-foreground">Nearby buyers and prices</div>
+              <div className="text-sm text-muted-foreground">
+                Nearby buyers and prices
+              </div>
             </a>
           </div>
 
           {/* Phone-friendly options */}
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <a href="tel:+910800000000" className="flex items-center gap-3 rounded-xl border p-4 text-base hover:bg-accent">
+            <a
+              href="tel:+910800000000"
+              className="flex items-center gap-3 rounded-xl border p-4 text-base hover:bg-accent"
+            >
               <Headphones className="h-5 w-5" /> IVR
             </a>
-            <a href="sms:+910800000000?body=ADVISORY" className="flex items-center gap-3 rounded-xl border p-4 text-base hover:bg-accent">
+            <a
+              href="sms:+910800000000?body=ADVISORY"
+              className="flex items-center gap-3 rounded-xl border p-4 text-base hover:bg-accent"
+            >
               <MessageCircle className="h-5 w-5" /> SMS
             </a>
-            <a href="#ussd" className="flex items-center gap-3 rounded-xl border p-4 text-base hover:bg-accent">
+            <a
+              href="#ussd"
+              className="flex items-center gap-3 rounded-xl border p-4 text-base hover:bg-accent"
+            >
               <Radio className="h-5 w-5" /> USSD
             </a>
           </div>
@@ -91,22 +133,30 @@ export default function Index() {
           <div className="rounded-xl border p-5">
             <Sprout className="h-5 w-5 text-emerald-600" />
             <div className="mt-2 font-semibold">AI Advice</div>
-            <p className="text-sm text-muted-foreground">Works offline. Updates when online.</p>
+            <p className="text-sm text-muted-foreground">
+              Works offline. Updates when online.
+            </p>
           </div>
           <div className="rounded-xl border p-5">
             <Shield className="h-5 w-5 text-emerald-600" />
             <div className="mt-2 font-semibold">Secure</div>
-            <p className="text-sm text-muted-foreground">Your data stays on your phone.</p>
+            <p className="text-sm text-muted-foreground">
+              Your data stays on your phone.
+            </p>
           </div>
           <div className="rounded-xl border p-5">
             <ShoppingCart className="h-5 w-5 text-emerald-600" />
             <div className="mt-2 font-semibold">Market</div>
-            <p className="text-sm text-muted-foreground">Find buyers near you.</p>
+            <p className="text-sm text-muted-foreground">
+              Find buyers near you.
+            </p>
           </div>
           <div className="rounded-xl border p-5">
             <ClipboardList className="h-5 w-5 text-emerald-600" />
             <div className="mt-2 font-semibold">Records</div>
-            <p className="text-sm text-muted-foreground">Keep simple farm notes.</p>
+            <p className="text-sm text-muted-foreground">
+              Keep simple farm notes.
+            </p>
           </div>
         </div>
       </section>

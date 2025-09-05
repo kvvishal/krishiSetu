@@ -27,7 +27,9 @@ export default function Header() {
       <div className="container flex h-16 items-center justify-between">
         <a href="/" className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-emerald-500" />
-          <span className="text-lg font-extrabold tracking-tight">{t("brand")}</span>
+          <span className="text-lg font-extrabold tracking-tight">
+            {t("brand")}
+          </span>
         </a>
         <div className="flex items-center gap-2">
           <select
@@ -40,7 +42,9 @@ export default function Header() {
             <option value="hi">हिं</option>
           </select>
           {canInstall && (
-            <Button size="sm" onClick={onInstall}>{t("ctaInstall")}</Button>
+            <Button size="sm" onClick={onInstall}>
+              {t("ctaInstall")}
+            </Button>
           )}
         </div>
       </div>

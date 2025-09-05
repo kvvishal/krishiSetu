@@ -43,7 +43,7 @@ async function ensure() {
           minPrice: 18.0,
           maxPrice: 22.0,
           lat: 28.6139,
-          lng: 77.2090,
+          lng: 77.209,
         },
         {
           id: "b2",
