@@ -8,9 +8,9 @@
   "theme_color": "#16a34a",
   "icons": [
     {
-      "src": "/placeholder.svg",
+      "src": "https://cdn.builder.io/api/v1/image/assets%2Fbcdd77f926774e8cba50eac1b52f1e59%2Fc359a4e515cb42708fa259666cd28ef4?format=webp&width=192",
       "sizes": "192x192",
-      "type": "image/svg+xml",
+      "type": "image/webp",
       "purpose": "any"
     },
     {
