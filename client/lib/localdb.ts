@@ -8,7 +8,7 @@ export interface LocalRecord {
   pending?: boolean;
 }
 
-const DB_NAME = "krishisetu";
+const DB_NAME = "krishsaathi";
 const DB_VERSION = 1;
 const STORE_RECORDS = "records";
 const STORE_OUTBOX = "outbox";
