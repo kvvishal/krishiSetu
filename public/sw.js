@@ -6,7 +6,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(clients.claim());
 });
 
-const CACHE_NAME = "krishisetu-cache-v1";
+const CACHE_NAME = "krishsaathi-cache-v1";
 
 self.addEventListener("fetch", (event) => {
   const req = event.request;
