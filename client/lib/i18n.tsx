@@ -11,10 +11,10 @@ type Lang = "en" | "hi";
 type Dict = Record<string, { en: string; hi: string }>;
 
 const dict: Dict = {
-  brand: { en: "KrishiSetu", hi: "कृषि सेतु" },
+  brand: { en: "Krishsaathi", hi: "कृषि साथी" },
   tagline: {
     en: "AI-powered, offline-first farming for every Indian farmer",
-    hi: "हर किसान के लिए एआई समर्थ, ऑफ़लाइन-फ़र्स्ट खेती",
+    hi: "हर किसान क�� लिए एआई समर्थ, ऑफ़लाइन-फ़र्स्ट खेती",
   },
   ctaGetStarted: { en: "Get Started", hi: "शुरू करें" },
   ctaInstall: { en: "Install App", hi: "एप इंस्टॉल करें" },
@@ -28,7 +28,7 @@ const dict: Dict = {
   },
   section1Desc: {
     en: "All critical data is stored securely on-device (IndexedDB). Background sync updates the cloud when connectivity returns.",
-    hi: "सभी महत्वपूर्ण डेटा डिवाइस पर सुरक्षित रहता है (IndexedDB)। कनेक्टिविटी आते ही बैकग्राउंड सिंक क्लाउड में अपडेट कर देता है।",
+    hi: "सभी महत्वपूर्ण डेटा डिवाइस पर सुरक्षित रहता है (IndexedDB)। कनेक्टिविटी आते ही बैकग्राउंड सिंक क्लाउड मे�� अपडेट कर देता है।",
   },
   section2Title: { en: "USSD • SMS • IVR", hi: "USSD • SMS • IVR" },
   section2Desc: {
@@ -43,7 +43,7 @@ const dict: Dict = {
   section4Title: { en: "Local + Cloud Sync", hi: "लोकल + क्लाउड सिंक" },
   section4Desc: {
     en: "Your device is the source of truth. Cloud keeps data safe, analyzable, and shareable for programs and dashboards.",
-    hi: "आपका डिवाइस मुख्य स्रोत है। क्लाउड डेटा को सुरक्षित, विश्लेषण योग्य और डैशबोर्ड के लिए साझा करने योग्य रखता है।",
+    hi: "आपका डिवाइस मुख्�� स्रोत है। क्लाउड डेटा को सुरक्षित, विश्लेषण योग्य और डैशबोर्ड के लिए साझा करने योग्य रखता है।",
   },
   section5Title: { en: "Community & Experts", hi: "समुदाय और विशे��ज्ञ" },
   section5Desc: {
