@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import SpeechButton from "@/components/common/SpeechButton";
 
 export default function AdvicePage() {
   const [form, setForm] = useState({ crop: "Wheat", soil: "Loam", moisture: 35, rainfall3d: 12 });
@@ -21,11 +22,17 @@ export default function AdvicePage() {
       <h1 className="text-2xl font-bold">Get Advice</h1>
       <div className="mt-4 grid max-w-xl grid-cols-2 gap-3">
         <div className="col-span-2">
-          <label className="text-sm">Crop</label>
+          <label className="flex items-center justify-between text-sm">
+            <span>Crop</span>
+            <SpeechButton onText={(t) => setForm((f) => ({ ...f, crop: f.crop ? f.crop + " " + t : t }))} />
+          </label>
           <Input value={form.crop} onChange={(e) => setForm({ ...form, crop: e.target.value })} />
         </div>
         <div>
-          <label className="text-sm">Soil</label>
+          <label className="flex items-center justify-between text-sm">
+            <span>Soil</span>
+            <SpeechButton onText={(t) => setForm((f) => ({ ...f, soil: (f.soil as any) ? (f.soil as any) + " " + t : (t as any) }))} />
+          </label>
           <Input value={form.soil} onChange={(e) => setForm({ ...form, soil: e.target.value as any })} />
         </div>
         <div>
