@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { putRecord } from "@/lib/localdb";
+import SpeechButton from "@/components/common/SpeechButton";
 import { toast } from "sonner";
 
 export default function RecordPage() {
@@ -20,11 +21,17 @@ export default function RecordPage() {
       <h1 className="text-2xl font-bold">Record Farm</h1>
       <div className="mt-4 grid max-w-xl gap-3">
         <div>
-          <label className="text-sm">Crop</label>
+          <label className="flex items-center justify-between text-sm">
+            <span>Crop</span>
+            <SpeechButton onText={(t) => setCrop((p) => (p ? p + " " : "") + t)} />
+          </label>
           <Input value={crop} onChange={(e) => setCrop(e.target.value)} />
         </div>
         <div>
-          <label className="text-sm">Notes</label>
+          <label className="flex items-center justify-between text-sm">
+            <span>Notes</span>
+            <SpeechButton onText={(t) => setNotes((p) => (p ? p + " " : "") + t)} />
+          </label>
           <Textarea rows={4} value={notes} onChange={(e) => setNotes(e.target.value)} />
         </div>
         <Button onClick={save}>Save</Button>
