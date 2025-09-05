@@ -116,3 +116,30 @@ export function startAutoSync(intervalMs = 10000) {
   window.addEventListener("online", run);
   setInterval(run, intervalMs);
 }
+
+export async function getRecordsByType(type: RecordType): Promise<LocalRecord[]> {
+  const all = await getAllRecords();
+  return all
+    .filter((r) => r.type === type)
+    .sort((a, b) => b.updatedAt - a.updatedAt);
+}
+
+export async function deleteRecordsByIds(ids: string[]): Promise<void> {
+  const db = await openDB();
+  await new Promise<void>((resolve, reject) => {
+    const tx = db.transaction([STORE_RECORDS, STORE_OUTBOX], "readwrite");
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+    const r = tx.objectStore(STORE_RECORDS);
+    const o = tx.objectStore(STORE_OUTBOX);
+    ids.forEach((id) => {
+      r.delete(id);
+      o.delete(id);
+    });
+  });
+}
+
+export async function clearType(type: RecordType): Promise<void> {
+  const toDelete = (await getAllRecords()).filter((r) => r.type === type).map((r) => r.id);
+  if (toDelete.length) await deleteRecordsByIds(toDelete);
+}
