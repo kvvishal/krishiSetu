@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n.tsx";
 import { putRecord, startAutoSync } from "@/lib/localdb";
 import { useEffect } from "react";
+import { toast } from "sonner";
 import { Headphones, MessageCircle, Radio, Sprout, ClipboardList, ShoppingCart, Shield, WifiOff } from "lucide-react";
 
 export default function Index() {
@@ -18,6 +19,18 @@ export default function Index() {
       payload: { crop: "Wheat" },
       updatedAt: Date.now(),
     });
+    toast.success("Saved offline");
+  };
+
+  const getAdvice = async () => {
+    const res = await fetch("/api/advice", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ crop: "Wheat", soil: "Loam", moisture: 35, rainfall3d: 12 }),
+    });
+    const data = await res.json();
+    const a = data.advice;
+    toast(`${a.crop}: ${a.tips[0]} • Pest: ${a.pestRisk}`);
   };
 
   return (
@@ -34,13 +47,13 @@ export default function Index() {
 
           {/* Three big actions */}
           <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            <a href="#advice" className="group rounded-2xl border p-5 hover:bg-accent">
+            <button onClick={getAdvice} className="group rounded-2xl border p-5 text-left hover:bg-accent">
               <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white">
                 <Sprout className="h-6 w-6" />
               </div>
               <div className="text-lg font-semibold">{t("btnAdvice")}</div>
               <div className="text-sm text-muted-foreground">AI crop, water and pest tips</div>
-            </a>
+            </button>
             <button onClick={quickRecord} className="rounded-2xl border p-5 text-left hover:bg-accent">
               <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-600 text-white">
                 <ClipboardList className="h-6 w-6" />
