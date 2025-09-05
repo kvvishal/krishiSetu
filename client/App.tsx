@@ -12,6 +12,7 @@ import Buyers from "./pages/Buyers";
 import Record from "./pages/Record";
 import Advice from "./pages/Advice";
 import USSD from "./pages/USSD";
+import Telephony from "./pages/Telephony";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import { I18nProvider } from "@/lib/i18n.tsx";
@@ -48,6 +49,7 @@ const App = () => (
               <Route path="/record" element={<Record />} />
               <Route path="/advice" element={<Advice />} />
               <Route path="/ussd" element={<USSD />} />
+              <Route path="/telephony" element={<Telephony />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
