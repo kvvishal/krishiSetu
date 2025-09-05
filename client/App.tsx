@@ -10,7 +10,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
-import { I18nProvider } from "@/lib/i18n";
+import { I18nProvider } from "@/lib/i18n.tsx";
 import { useEffect } from "react";
 
 const queryClient = new QueryClient();
