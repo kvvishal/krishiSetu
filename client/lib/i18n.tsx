@@ -8,7 +8,7 @@ const dict: Dict = {
   brand: { en: "KrishiSetu", hi: "कृषि सेतु" },
   tagline: {
     en: "AI-powered, offline-first farming for every Indian farmer",
-    hi: "हर किसान के लिए एआई समर्थ, ऑफ़ला��न-फ़र्स्ट खेती",
+    hi: "हर किसान के लिए एआई समर्थ, ऑफ़लाइन-फ़र्स्ट खेती",
   },
   ctaGetStarted: { en: "Get Started", hi: "शुरू करें" },
   ctaInstall: { en: "Install App", hi: "एप इंस्टॉल करें" },
@@ -36,7 +36,7 @@ const dict: Dict = {
     en: "Your device is the source of truth. Cloud keeps data safe, analyzable, and shareable for programs and dashboards.",
     hi: "आपका डिवाइस मुख्य स्रोत है। क्लाउड डेटा को सुरक्षित, विश्लेषण योग्य और डैशबोर्ड के लिए साझा करने योग्य रखता है।",
   },
-  section5Title: { en: "Community & Experts", hi: "समुदाय और विशेषज्ञ" },
+  section5Title: { en: "Community & Experts", hi: "समुदाय और विशे��ज्ञ" },
   section5Desc: {
     en: "Connect with peers and agronomists via text, voice notes, or IVR. Broadcast advisories in regional languages.",
     hi: "टेक्स्ट, वॉइस नोट्स या IVR से साथियों और कृषि विशेषज्ञों से जुड़ें। क्षेत्रीय भाषाओं में सलाह प्रसारित करें।",
@@ -46,10 +46,10 @@ const dict: Dict = {
     en: "List produce and discover buyers nearby. Matching ensures fair prices and reduces middlemen reliance.",
     hi: "उत्पाद सूचीबद्ध करें और आसपास के खरीदार खोजें। मैचिंग से उचित कीमत और बिचौलियों पर निर्भरता कम होती है।",
   },
-  section7Title: { en: "Secure & Multilingual", hi: "सुरक्���ित और बहुभाषी" },
+  section7Title: { en: "Secure & Multilingual", hi: "सुरक्षित और बहुभाषी" },
   section7Desc: {
     en: "End-to-end encrypted sync. Full Hindi and English UI today; easily extensible to more Indian languages.",
-    hi: "एंड-टू-एंड एन्क्रिप्टेड सिंक। आज हिंदी और अंग्रेज़ी UI; अन्य भारतीय भाषाओं तक आसानी से विस्तार योग्य।",
+    hi: "एंड-टू-एंड एन्क्रिप्टेड सिंक। आज ह���ंदी और अंग्रेज़ी UI; अन्य भारतीय भाषाओं तक आसानी से विस्तार योग्य।",
   },
   section8Title: { en: "Built to Scale", hi: "स्केलेबल आर्किटेक्चर" },
   section8Desc: {
@@ -63,6 +63,11 @@ const dict: Dict = {
   offlineReady: { en: "Offline Ready", hi: "ऑफ़लाइन तैयार" },
   syncing: { en: "Syncing...", hi: "सिंक हो रहा है..." },
   synced: { en: "All changes synced", hi: "सभी बदलाव सिंक हुए" },
+  simpleTitle: { en: "Simple farming assistant", hi: "सरल खेती सहायक" },
+  simpleSubtitle: { en: "Do 3 things easily", hi: "तीन आसान काम" },
+  btnAdvice: { en: "Get Advice", hi: "सलाह लें" },
+  btnRecord: { en: "Record Farm", hi: "खेत दर्ज करें" },
+  btnMarket: { en: "Find Buyer", hi: "खरीदार खोजें" }
 };
 
 interface I18nContextValue {
@@ -74,7 +79,12 @@ interface I18nContextValue {
 const I18nContext = createContext<I18nContextValue | null>(null);
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(() => (localStorage.getItem("lang") as Lang) || "en");
+  const [lang, setLangState] = useState<Lang>(() => {
+    const saved = localStorage.getItem("lang") as Lang | null;
+    if (saved) return saved;
+    const nav = (navigator.language || "en").toLowerCase();
+    return nav.startsWith("hi") ? "hi" : "en";
+  });
 
   const setLang = (l: Lang) => {
     setLangState(l);
