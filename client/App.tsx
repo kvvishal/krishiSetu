@@ -8,6 +8,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Buyers from "./pages/Buyers";
+import Record from "./pages/Record";
+import Advice from "./pages/Advice";
+import USSD from "./pages/USSD";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import { I18nProvider } from "@/lib/i18n.tsx";
@@ -40,6 +44,10 @@ const App = () => (
           <AppShell>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/buyers" element={<Buyers />} />
+              <Route path="/record" element={<Record />} />
+              <Route path="/advice" element={<Advice />} />
+              <Route path="/ussd" element={<USSD />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
