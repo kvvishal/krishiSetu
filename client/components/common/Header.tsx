@@ -26,7 +26,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <a href="/" className="flex items-center gap-2">
-          <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-emerald-500" />
+          <img src="https://cdn.builder.io/api/v1/image/assets%2Fbcdd77f926774e8cba50eac1b52f1e59%2Fc359a4e515cb42708fa259666cd28ef4?format=webp&width=128" alt="KrishiSetu logo" className="h-8 w-8 object-contain" width={32} height={32} decoding="async" />
           <span className="text-lg font-extrabold tracking-tight">
             {t("brand")}
           </span>
