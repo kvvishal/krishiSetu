@@ -1,0 +1,23 @@
+{
+  "buyers": [
+    {
+      "id": "b1",
+      "name": "Mandi Co-Op",
+      "commodity": "Wheat",
+      "minPrice": 18,
+      "maxPrice": 22,
+      "lat": 28.6139,
+      "lng": 77.209
+    },
+    {
+      "id": "b2",
+      "name": "Local Wholesaler",
+      "commodity": "Paddy",
+      "minPrice": 16.5,
+      "maxPrice": 20.2,
+      "lat": 26.8467,
+      "lng": 80.9462
+    }
+  ],
+  "listings": []
+}
